@@ -1,47 +1,14 @@
-
 const getData = () => {
-    const token = document.getElementById('token').value
+    const app = document.getElementsByClassName('app')[0]
+    console.log("🚀 ~ file: index.js:4 ~ getData ~ document.getElementsByClassName('tableClassName')[0]:",  document.querySelector('table'))
+    document.querySelector('table') && app.removeChild( document.querySelector('table'))
+    const token = document.getElementById('token').value 
+    localStorage.setItem('token', token)
     const api = document.getElementById('api').value
+    localStorage.setItem('api', api)
     fetch(api, { method: "GET", headers: { apiToken: token } }).then(resp => console.log(resp.json().then(data => {
         renderTable(data)
     })))
-}
-
-
-const createTableFromArrayOfArray = (arrayOfObj, sliceUntil, tableClassName,isObject,extraRow) => {
-    console.log("🚀 ~ file: index.js:9 ~ createTableFromArrayOfArray ~ arrayOfObj:", arrayOfObj)
-    const table = document.createElement('table')
-    table.className = tableClassName
-    arrayOfObj.forEach((row,rowNumber) => {
-        table.appendChild(createRow(row, sliceUntil, rowNumber,isObject))
-    });
-    document.querySelector('.app')?.appendChild(table)
-    console.log(table)
-}
-
-const createRow = (rowData,sliceUntil,rowNumber,isObject,extraRow) => {
-    const dataWithoutHistory = isObject? rowData : rowData.slice(0, sliceUntil)
-    const row = document.createElement("tr")
-    let iterateOver = isObject ? Object.values(dataWithoutHistory) : dataWithoutHistory
-    if (extraRow) {
-        iterateOver = [extraRow,(isObject?Object.values(dataWithoutHistory) : dataWithoutHistory)]
-    }
-    iterateOver.forEach((data) => {
-        const col = document.createElement("td")
-        col.innerText = data || "-"
-        row.appendChild(col)
-    });
-    const button = document.createElement('button')
-    button.innerText = "Check history"
-    button.onclick = () => {
-            const mainTable = document.getElementsByClassName('main-table')[0];
-        mainTable.style.display = "none";
-        const extraRow = Object.keys(rowData[19][0]|| null)
-        console.log("🚀 ~ file: index.js:40 ~ createRow ~ extraRow:", extraRow)
-        createTableFromArrayOfArray(rowData[19], null, 'history-table', true, extraRow);
-        }
-        row.appendChild(button)
-        return row
 }
 
 
