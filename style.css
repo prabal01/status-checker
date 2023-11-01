@@ -5,6 +5,9 @@ body {
 .app {
   margin: 20px;
 }
+.input-container{
+  margin: 20px;
+}
 
 table {
   border-collapse: collapse;
@@ -73,4 +76,65 @@ button:hover {
 
 .details-td:hover {
   background-color: #e6e6e6;
+}
+
+/* body {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+.chart {
+  display: flex;
+  width: 300px;
+  margin-top: 20px;
+}
+
+.bar {
+  height: 30px;
+  margin-right: 5px;
+  transition: width 0.5s ease;
+}
+
+#playtimeBar {
+  background-color: #3498db;
+}
+
+#buffertimeBar {
+  background-color: #e74c3c;
+}
+
+button:disabled{
+  background-color: gray;
+}
+
+.hidden {
+  display: none;
+}
+
+.graph-bar{
+  width: 0%;
+  height: 20px;
+  background-color: orange;
+  margin: 10px;
+  border-radius: 4px  ;
+  white-space: nowrap;
+  padding: 5px;
+  transition: all 1s;
+}
+.graph-container{
+  width: 300px;
+  border: 1px solid ;
+  margin: 20px;
+  padding: 20px;
+}
+
+h4{margin:0;}
+
+.playtime-bar{
+  background-color: rgb(4, 213, 199);
+}
+.other-bar{
+  background-color: lightgray;
 }
